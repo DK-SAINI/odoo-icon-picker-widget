@@ -30,7 +30,7 @@ The widget will display:
 2. A "Pick an Icon" button that opens the media dialog
 3. A live preview of the currently selected icon
     """,
-    "author": "DK Saini",
+    "author": "Dheeraj Chauhan",
     "website": "https://github.com/DK-SAINI",
     "category": "Technical",
     "version": "17.0.1.0.0",
