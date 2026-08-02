@@ -19,7 +19,7 @@
   }
 }
 */
-[class$="icon-"]:before, [class*="icon- "]:before {
+[class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
@@ -54,5 +54,5 @@
 /*   text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.fa-apache_airflowicon-:before { content: '\e800'; } /* '' */
-.fa-capsule-svgrepo-comicon-:before { content: '\e801'; } /* '' */
+.icon-apache-airflow:before { content: '\e800'; } /* '' */
+.icon-capsule:before { content: '\e801'; } /* '' */

@@ -3,11 +3,11 @@
     "name": "Icon Picker Widget",
     "summary": "Easily select and assign Font Awesome icons to any Char field using a visual icon picker",
     "description": """
-Icon Picker Widget for Odoo 18
+Icon Picker Widget for Odoo 19
 ==============================
 
 A powerful and user-friendly OWL widget that adds a visual icon picker to any
-Char field in Odoo 18 backend views. Instead of manually typing icon class names,
+Char field in Odoo 19 backend views. Instead of manually typing icon class names,
 users can simply click "Pick an Icon" and choose from a rich library of
 Font Awesome, Fontello, and IcoMoon icons through Odoo's built-in Media Dialog.
 
@@ -17,7 +17,7 @@ Key Features
 * **Live Preview** — See a real-time preview of the selected icon right next to the field.
 * **Easy Integration** — Simply add ``widget="icon_picker"`` to any Char field in your XML views.
 * **Multiple Icon Libraries** — Supports Font Awesome, Fontello, and IcoMoon icons out of the box.
-* **OWL Component** — Built with Odoo 18's modern OWL framework for optimal performance.
+* **OWL Component** — Built with Odoo 19's modern OWL framework for optimal performance.
 
 Usage
 -----
@@ -33,8 +33,8 @@ The widget will display:
     "author": "Dheeraj Chauhan",
     "website": "https://github.com/DK-SAINI",
     "category": "Technical",
-    "version": "18.0.1.0.0",
-    "depends": ["base", "web_editor"],
+    "version": "19.0.1.0.0",
+    "depends": ["base", "html_editor"],
     "assets": {
         "web.assets_backend": [
             "icon_picker_widget/static/src/libs/fontawesome/css/*.css",

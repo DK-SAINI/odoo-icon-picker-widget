@@ -3,13 +3,14 @@
 import { registry } from "@web/core/registry";
 import { standardFieldProps } from "@web/views/fields/standard_field_props";
 import { useService } from "@web/core/utils/hooks";
-import { MediaDialog } from '@web_editor/components/media_dialog/media_dialog';
-import { Component, useState, onMounted, useRef, onWillUpdateProps } from "@odoo/owl";
+import { MediaDialog } from '@html_editor/main/media/media_dialog/media_dialog';
+import { Component, useState, onWillUpdateProps } from "@odoo/owl";
 
 
 export class IconPickerField extends Component {
     static props = { ...standardFieldProps };
     static template = "icon_picker_widget.IconPickerField";
+    static supportedTypes = ["char"];
 
 
     setup() {
@@ -24,6 +25,15 @@ export class IconPickerField extends Component {
         });
     }
 
+    /**
+     * Returns the CSS classes needed to render the stored Font Awesome icon.
+     */
+    get iconClass() {
+        const icon = this.state.icon;
+        if (!icon) return '';
+        return `fa ${icon} fa-lg`;
+    }
+
     // This function will be triggered when the icon picker button is clicked
     onClickIconPicker() {
         this.dialog.add(MediaDialog, {
@@ -33,11 +43,11 @@ export class IconPickerField extends Component {
             noImages: true,
             save: (icon) => {
                 const el = icon instanceof HTMLElement ? icon : Object.assign(document.createElement('div'), { innerHTML: icon }).firstElementChild;
-                const classes = (el && el.getAttribute('class') || '').split(' ');
-                const faIconClass = classes.find(cls => cls.startsWith('fa-'));
-                if (faIconClass) {
-                    this.state.icon = faIconClass;
-                    this.props.record.update({ [this.props.name]: faIconClass });
+                const classes = (el && el.getAttribute('class') || '').split(' ').filter(c => c);
+                const iconClass = classes.find(cls => cls.startsWith('fa-') && cls !== 'fa');
+                if (iconClass) {
+                    this.state.icon = iconClass;
+                    this.props.record.update({ [this.props.name]: iconClass });
                 }
             },
         });
@@ -45,8 +55,6 @@ export class IconPickerField extends Component {
 }
 
 
-
-IconPickerField.supportedTypes = ["char"];
 export const icon_picker = {component: IconPickerField};
 
 // Register the new field in the Odoo registry

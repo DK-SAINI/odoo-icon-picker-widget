@@ -5,7 +5,7 @@
             <!-- Input field for the icon class -->
             <input 
                 type="text"
-                t-model="state.icon" 
+                t-att-value="state.icon" 
                 readonly="readonly" 
                 class="o_input" 
                 placeholder="Icon class will appear here"
@@ -20,7 +20,7 @@
             <!-- Icon preview -->
             <t t-if="state.icon">
                 <div class="icon-box d-flex justify-content-center align-items-center">
-                    <span t-attf-class="fa {{state.icon}} fa-lg"></span>
+                    <span t-att-class="iconClass"></span>
                 </div>
             </t>
             
