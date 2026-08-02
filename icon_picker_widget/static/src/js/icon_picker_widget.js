@@ -27,16 +27,15 @@ export class IconPickerField extends Component {
     // This function will be triggered when the icon picker button is clicked
     onClickIconPicker() {
         this.dialog.add(MediaDialog, {
-            resModel: 'faq.icon',
+            resModel: this.props.record.resModel,
             noDocuments: true,
             noVideos: true,
             noImages: true,
-            // useMediaLibrary: true,
-            save: icon => {
-                let iconElement = $(icon);
-                console.log(iconElement);
-                let faIconClass = iconElement.attr('class').split(' ').find(cls => cls.startsWith('fa-'));
-                if(faIconClass){
+            save: (icon) => {
+                const el = icon instanceof HTMLElement ? icon : Object.assign(document.createElement('div'), { innerHTML: icon }).firstElementChild;
+                const classes = (el && el.getAttribute('class') || '').split(' ');
+                const faIconClass = classes.find(cls => cls.startsWith('fa-'));
+                if (faIconClass) {
                     this.state.icon = faIconClass;
                     this.props.record.update({ [this.props.name]: faIconClass });
                 }
